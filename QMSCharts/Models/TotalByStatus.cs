@@ -13,5 +13,7 @@
         public string Status { get; set; } = string.Empty;
         public int Total { get; set; }
         public double Percentage { get; set; }
+
+        public string StatusAndPercentage { get; set; } = string.Empty;
     }
 }

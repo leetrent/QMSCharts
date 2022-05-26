@@ -1,6 +1,7 @@
 ﻿using Kendo.Mvc.UI;
 using Microsoft.AspNetCore.Mvc;
 using QMSCharts.Models;
+using System.Globalization;
 
 namespace QMSCharts.Controllers
 {
@@ -30,11 +31,28 @@ namespace QMSCharts.Controllers
                 grandTotal += tbs.Total;
             }
 
-            Console.WriteLine($"\n[QMSDashboardController][GetTotalsByStatus] => (grandTotal: {grandTotal})");
+            string logSnippet = "\n[QMSDashboardController][GetTotalsByStatus] =>";
+            //Console.WriteLine($"\n{logSnippet} (grandTotal: {grandTotal})");
 
             foreach (var tbs in totalsByStatus)
             {
-                tbs.Percentage = tbs.Total / grandTotal;
+                tbs.Percentage = (double)tbs.Total / (double)grandTotal;
+                string percentageAsString = tbs.Percentage.ToString("P1", CultureInfo.InvariantCulture);
+
+                tbs.StatusAndPercentage = $"{tbs.Status} ({percentageAsString})";
+
+
+                Console.WriteLine("---------------------------------------------------------");
+                Console.WriteLine($"{logSnippet} (tbs.Total)..............: {tbs.Total})");
+                Console.WriteLine($"{logSnippet} (grandTotal).............: {grandTotal})");
+                Console.WriteLine($"{logSnippet} (tbs.Percentage).........: {tbs.Percentage})");
+                Console.WriteLine($"{logSnippet} (percentageAsString).....: {percentageAsString})");
+                Console.WriteLine($"{logSnippet} (tbs.StatusAndPercentage): {tbs.StatusAndPercentage})");
+                Console.WriteLine("---------------------------------------------------------");
+
+                //Console.WriteLine($"\n{logSnippet} (tbs.Percentage: {tbs.Percentage})");
+                //Console.WriteLine($"\n{logSnippet} (tbs.Percentage: {tbs.Percentage})");
+                //Console.WriteLine($"\n{logSnippet} (tbs.Percentage: {tbs.Percentage.ToString("P1", CultureInfo.InvariantCulture)})");
             }
 
             return totalsByStatus;
