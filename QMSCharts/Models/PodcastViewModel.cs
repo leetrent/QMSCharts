@@ -9,7 +9,7 @@ namespace QMSCharts.Models
     {
         private int views;
 
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
 
         public int Downloads { get; set; }
 
@@ -31,8 +31,8 @@ namespace QMSCharts.Models
 
         public int Reach { get; set; }
 
-        public string Device { get; set; }
+        public string Device { get; set; } = string.Empty;
 
-        public string PlatformName { get; set; }
+        public string PlatformName { get; set; } = string.Empty;
     }
 }
