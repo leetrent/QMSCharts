@@ -37,7 +37,8 @@ namespace QMSCharts.Controllers
             foreach (var tbs in totalsByStatus)
             {
                 tbs.Percentage = (double)tbs.Total / (double)grandTotal;
-                string percentageAsString = tbs.Percentage.ToString("P1", CultureInfo.InvariantCulture);
+                //string percentageAsString = tbs.Percentage.ToString("P1", CultureInfo.InvariantCulture);
+                string percentageAsString = tbs.Percentage.ToString("P1", CultureInfo.CreateSpecificCulture("en-US"));
 
                 tbs.StatusAndPercentage = $"{tbs.Status} ({percentageAsString})";
 
