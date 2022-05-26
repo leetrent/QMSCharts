@@ -23,6 +23,11 @@ namespace QMSCharts.Controllers
             return View();
         }
 
+        public IActionResult TotalsByStatus()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();
