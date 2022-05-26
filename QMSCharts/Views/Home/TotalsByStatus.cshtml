@@ -63,37 +63,6 @@
     )
 </script>
 
-<!-- container grid template -->
-<script id="grid-template" type="text/x-kendo-template">
-    @(Html.Kendo().Grid<PodcastViewModel>()
-                                        .Name("Grid")
-                                        .Columns(columns =>
-                                        {
-                                            columns.Bound(p => p.Name).Title("Podcast Episode").Width(320);
-                                            columns.Bound(p => p.Streams).Width(150);
-                                            columns.Bound(p => p.Downloads).Width(250);
-                                        })
-                                        .Sortable()
-                                        .Scrollable(s => s.Height("auto"))
-                                        .HtmlAttributes(new { style = "height:100%;" })
-                                        .DataSource(dataSource => dataSource
-                                            .Ajax()
-                                            .PageSize(5)
-                                            .Sort(s => s.Add(f => f.Streams).Descending())
-                                            .Read("Podcasts_Read", "Dashboard")
-                                            .Aggregates(a =>
-                                            {
-                                                a.Add(f => f.Downloads).Sum();
-                                                a.Add(f => f.Streams).Sum();
-                                                a.Add(f => f.Reach).Sum();
-                                                a.Add(f => f.Views).Sum();
-                                            })
-                                        )
-                                        .Events(e => e.DataBound("populateTotals"))
-                                        .ToClientTemplate()
-    )
-</script>
-
 <div class="d-flex justify-content-center">
     @(Html.Kendo().DataSource<PodcastViewModel>()
                                         .Name("dateChartDataSource")
@@ -108,7 +77,6 @@
         .ColumnsWidth("350px")
         .Containers(c =>
         {
-            c.Add().Header(h => h.Text("Top 5 Episodes")).BodyTemplateId("grid-template").ColSpan(4).RowSpan(2);
             c.Add().Header(h => h.Text("Listening platforms-Apps")).BodyTemplateId("apps-chart-template").ColSpan(2).RowSpan(2);
             c.Add().Header(h => h.Text("Listening platforms-Devices")).BodyTemplateId("platforms-chart-template").ColSpan(2).RowSpan(2);
         })
@@ -138,5 +106,3 @@
         }
     </script>
 </div>
-
-</script>
