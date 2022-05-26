@@ -30,7 +30,7 @@ namespace QMSCharts.Controllers
                 grandTotal += tbs.Total;
             }
 
-            Console.WriteLine("\n[QMSDashboardController][GetTotalsByStatus] => (grandTotal: %d)", grandTotal);
+            Console.WriteLine($"\n[QMSDashboardController][GetTotalsByStatus] => (grandTotal: {grandTotal})");
 
             foreach (var tbs in totalsByStatus)
             {
