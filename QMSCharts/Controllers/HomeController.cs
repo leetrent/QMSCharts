@@ -32,6 +32,10 @@ namespace QMSCharts.Controllers
         {
             return View();
         }
+        public IActionResult TotalsByOrganization()
+        {
+            return View();
+        }
 
         public IActionResult Privacy()
         {

@@ -53,5 +53,33 @@ namespace QMSCharts.Services
 
             return totalsByStatus;
         }
+
+        public IEnumerable<QMSChart> GetTotalsByOrganization()
+        {
+            var totalsByOrganization = new QMSChart[]
+            {
+                new QMSChart(1, "CABS HR Service Center", 5),
+                new QMSChart(2, "Executive Resources Service Center", 1),
+                new QMSChart(3, "FAS Service Center", 25),
+                new QMSChart(4, "PBS Service Center", 36),
+                new QMSChart(5, "Processing Center", 27),
+                new QMSChart(6, "Staff Offices Service Center", 25),
+            };
+
+            int grandTotal = 0;
+            foreach (var tbo in totalsByOrganization)
+            {
+                grandTotal += tbo.Value;
+            }
+
+            foreach (var tbo in totalsByOrganization)
+            {
+                double percentage = (double)tbo.Value / (double)grandTotal;
+                string percentageAsString = percentage.ToString("P1", CultureInfo.CreateSpecificCulture("en-US"));
+                tbo.Key = $"{tbo.Key} ({percentageAsString})";
+            }
+
+            return totalsByOrganization;
+        }
     }
 }

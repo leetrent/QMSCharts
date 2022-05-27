@@ -21,8 +21,11 @@ namespace QMSCharts.Controllers
 
         public ActionResult DaysToResolveTickets_Read([DataSourceRequest] DataSourceRequest request)
         {
-            Console.WriteLine("[QMSDashboardController][DaysToResolveTickets_Read] =>");
             return Json(_service.GetDaysToResolveTickets());
+        }
+        public ActionResult TotalsByOrganization_Read([DataSourceRequest] DataSourceRequest request)
+        {
+            return Json(_service.GetTotalsByOrganization());
         }
 
     }
