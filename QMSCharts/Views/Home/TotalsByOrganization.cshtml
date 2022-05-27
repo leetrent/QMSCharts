@@ -1,1 +1,84 @@
-﻿<h1>Totals by Organization</h1>
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<style>
+    .k-footer-template {
+        display: none;
+    }
+
+    .k-card-header {
+        flex: 0 0 auto;
+    }
+
+    .k-card-body {
+        overflow: hidden;
+    }
+</style>
+
+<script id="donut-labels" type="text/x-kendo-template">
+    #= category #
+</script>
+<script id="apps-chart-template" type="text/x-kendo-template">
+    @(Html.Kendo().Chart()
+        .Name("devices")
+        .Series(s => s.Pie("Value", "Key")
+            .AutoFit()
+            .Labels(labels => labels
+            .Visible(true)
+            .TemplateId("donut-labels")
+            .Background("transparent")
+            .Position(ChartSeriesLabelsPosition.OutsideEnd)
+            )
+        )
+        .Legend(l => l.Visible(false))
+        .DataSource(d => d.Read("TotalsByOrganization_Read", "QMSDashboard"))
+        .HtmlAttributes(new { style = "height:100%;width:100%;" })
+        .ToClientTemplate()
+    )
+</script>
+<script id="platforms-chart-template" type="text/x-kendo-template">
+    @(Html.Kendo().Chart<QMSChart>()
+        .Name("platforms")
+        .Series(s =>
+            s.Donut(model => model.Value, model => model.Key)
+            .AutoFit()
+            .Labels(labels => labels
+            .Visible(true)
+            .TemplateId("donut-labels")
+            .Position(ChartSeriesLabelsPosition.OutsideEnd)
+            .Background("transparent"))
+        )
+        .DataSource(d => d.Read("TotalsByOrganization_Read", "QMSDashboard"))
+        .Legend(l => l.Visible(false))
+        .HtmlAttributes(new { style = "height:100%;width:100%;" })
+        .ToClientTemplate()
+    )
+</script>
+
+<div class="d-flex justify-content-center">
+    @(Html.Kendo().TileLayout()
+        .Name("tilelayout")
+        .Columns(4)
+        .RowsHeight("145px")
+        .ColumnsWidth("350px")
+        .Containers(c =>
+        {
+            c.Add().Header(h => h.Text("Totals by Organization")).BodyTemplateId("apps-chart-template").ColSpan(2).RowSpan(2);
+            c.Add().Header(h => h.Text("Totals by Organization")).BodyTemplateId("platforms-chart-template").ColSpan(2).RowSpan(2);
+        })
+        .Reorderable(true)
+        .Resizable(true)
+        .Events(e => e.Resize("onTileResize"))
+    )
+    <script>
+        function onTileResize(e) {
+            var container = e.item || e.container;
+            if (container) {
+
+                // for widgets that do not auto resize
+                // https://docs.telerik.com/kendo-ui/styles-and-layout/using-kendo-in-responsive-web-pages
+                kendo.resize(container, true);
+            }
+        }
+    </script>
+</div>
