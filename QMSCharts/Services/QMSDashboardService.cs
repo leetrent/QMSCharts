@@ -20,6 +20,8 @@ namespace QMSCharts.Services
                 new DaysToResolveTicket(9, "90+ Days", 67),
             };
 
+            Console.WriteLine("[QMSDashboardService][GetDaysToResolveTickets] =>");
+
             return daysToResolveTickets;
         }
 

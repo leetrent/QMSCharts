@@ -19,8 +19,9 @@ namespace QMSCharts.Controllers
             return Json(_service.GetTotalsByStatus());
         }
 
-        public ActionResult DatysToResolveTickets_Read([DataSourceRequest] DataSourceRequest request)
+        public ActionResult DaysToResolveTickets_Read([DataSourceRequest] DataSourceRequest request)
         {
+            Console.WriteLine("[QMSDashboardController][DaysToResolveTickets_Read] =>");
             return Json(_service.GetDaysToResolveTickets());
         }
 
