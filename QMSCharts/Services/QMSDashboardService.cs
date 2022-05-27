@@ -25,34 +25,34 @@ namespace QMSCharts.Services
             return daysToResolveTickets;
         }
 
-        public IEnumerable<TotalByStatus> GetTotalsByStatus()
-        {
-            var totalsByStatus = new TotalByStatus[]
-            {
-                new TotalByStatus(1, "Assigned", 79),
-                new TotalByStatus(2, "Closed - Action Completed", 1916),
-                new TotalByStatus(3, "Closed - No Action Required", 234),
-                new TotalByStatus(4, "Draft", 10),
-                new TotalByStatus(5, "Pending Review", 11),
-                new TotalByStatus(6, "Returned", 92),
-                new TotalByStatus(7, "Unassigned", 5),
-            };
+        //public IEnumerable<TotalByStatus> GetTotalsByStatus()
+        //{
+        //    var totalsByStatus = new TotalByStatus[]
+        //    {
+        //        new TotalByStatus(1, "Assigned", 79),
+        //        new TotalByStatus(2, "Closed - Action Completed", 1916),
+        //        new TotalByStatus(3, "Closed - No Action Required", 234),
+        //        new TotalByStatus(4, "Draft", 10),
+        //        new TotalByStatus(5, "Pending Review", 11),
+        //        new TotalByStatus(6, "Returned", 92),
+        //        new TotalByStatus(7, "Unassigned", 5),
+        //    };
 
-            int grandTotal = 0;
-            foreach (var tbs in totalsByStatus)
-            {
-                grandTotal += tbs.Total;
-            }
+        //    int grandTotal = 0;
+        //    foreach (var tbs in totalsByStatus)
+        //    {
+        //        grandTotal += tbs.Total;
+        //    }
 
-            foreach (var tbs in totalsByStatus)
-            {
-                tbs.Percentage = (double)tbs.Total / (double)grandTotal;
-                string percentageAsString = tbs.Percentage.ToString("P1", CultureInfo.CreateSpecificCulture("en-US"));
-                tbs.StatusAndPercentage = $"{tbs.Status} ({percentageAsString})";
-            }
+        //    foreach (var tbs in totalsByStatus)
+        //    {
+        //        tbs.Percentage = (double)tbs.Total / (double)grandTotal;
+        //        string percentageAsString = tbs.Percentage.ToString("P1", CultureInfo.CreateSpecificCulture("en-US"));
+        //        tbs.StatusAndPercentage = $"{tbs.Status} ({percentageAsString})";
+        //    }
 
-            return totalsByStatus;
-        }
+        //    return totalsByStatus;
+        //}
 
         public IEnumerable<QMSChart> GetTotalsByOrganization()
         {
@@ -80,6 +80,35 @@ namespace QMSCharts.Services
             }
 
             return totalsByOrganization;
+        }
+
+        public IEnumerable<QMSChart> GetTotalsByStatus()
+        {
+            var totalsByStatus = new QMSChart[]
+            {
+                new QMSChart(1, "Assigned", 79),
+                new QMSChart(2, "Closed - Action Completed", 1916),
+                new QMSChart(3, "Closed - No Action Required", 234),
+                new QMSChart(4, "Draft", 10),
+                new QMSChart(5, "Pending Review", 11),
+                new QMSChart(6, "Returned", 92),
+                new QMSChart(7, "Unassigned", 5),
+            };
+
+            int grandTotal = 0;
+            foreach (var tbs in totalsByStatus)
+            {
+                grandTotal += tbs.Value;
+            }
+
+            foreach (var tbs in totalsByStatus)
+            {
+                double percentage = (double)tbs.Value / (double)grandTotal;
+                string percentageAsString = percentage.ToString("P1", CultureInfo.CreateSpecificCulture("en-US"));
+                tbs.Key = $"{tbs.Key} ({percentageAsString})";
+            }
+
+            return totalsByStatus;
         }
     }
 }
