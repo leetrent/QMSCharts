@@ -15,20 +15,6 @@
     }
 </style>
 
-<!-- container text templates -->
-<script id="total-streams-template" type="text/x-kendo-template">
-    <h2 id="total-streams"></h2>
-</script>
-<script id="total-downloads-template" type="text/x-kendo-template">
-    <h2 id="total-downloads"></h2>
-</script>
-<script id="reach-template" type="text/x-kendo-template">
-    <h2 id="total-reach"></h2>
-</script>
-<script id="revenue-template" type="text/x-kendo-template">
-    <h2 id="total-revenue"></h2>
-</script>
-
 <!-- container chart templates -->
 <script id="downloads-chart-template" type="text/x-kendo-template">
     @(Html.Kendo().Chart()
@@ -164,10 +150,6 @@
                                             .ColumnsWidth("350px")
                                             .Containers(c =>
                                             {
-                                                c.Add().Header(h => h.Text("Total Streams")).BodyTemplateId("total-streams-template").ColSpan(1).RowSpan(1);
-                                                c.Add().Header(h => h.Text("Total Downloads")).BodyTemplateId("total-downloads-template").ColSpan(1).RowSpan(1);
-                                                c.Add().Header(h => h.Text("Reach")).BodyTemplateId("reach-template").ColSpan(1).RowSpan(1);
-                                                c.Add().Header(h => h.Text("Revenue")).BodyTemplateId("revenue-template").ColSpan(1).RowSpan(1);
                                                 c.Add().Header(h => h.Text("Weekly Recap-Downloads")).BodyTemplateId("downloads-chart-template").ColSpan(2).RowSpan(3);
                                                 c.Add().Header(h => h.Text("Performance Trend")).BodyTemplateId("performance-chart-template").ColSpan(2).RowSpan(3);
                                                 c.Add().Header(h => h.Text("Top 5 Episodes")).BodyTemplateId("grid-template").ColSpan(4).RowSpan(2);
