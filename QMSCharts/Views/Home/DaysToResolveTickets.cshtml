@@ -17,19 +17,13 @@
 
 <!-- container chart templates -->
 <script id="downloads-chart-template" type="text/x-kendo-template">
-    @(Html.Kendo().Chart()
+    @(Html.Kendo().Chart<DaysToResolveTicket>()
         .Name("downloads")
-        .Series(s => s.Line("Downloads", "Date"))
+        .Series(s => s.Line("Total", "DaysOldRange"))
         .Legend(l => l.Visible(true))
-        .CategoryAxis(c =>
-            c.Date()
-            .BaseUnit(ChartAxisBaseUnit.Fit)
-            .Labels(l => l.Format("{0:d MMM}").Rotation("auto"))
-            .MajorGridLines(mg => mg.Visible(false))
-            .MajorTicks(mt => mt.Visible(false))
-            )
-        .ValueAxis(v => v.Min(2000).Max(16000).Labels(l => l.Step(4)))
-        .DataSource(d => d.Read("Downloads_Read", "Dashboard"))
+        .CategoryAxis(axis => axis.Categories(model => model.DaysOldRange))
+        .ValueAxis(v => v.Min(0).Max(800).Labels(l => l.Step(2)))
+        .DataSource(d => d.Read("DaysToResolveTickets_Read", "QMSDashboard"))
         .HtmlAttributes(new { style = "height:100%;width:100%;" })
         .ToClientTemplate()
     )
