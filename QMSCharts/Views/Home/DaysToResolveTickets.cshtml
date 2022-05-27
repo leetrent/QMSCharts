@@ -23,7 +23,7 @@
                                         // https://docs.telerik.com/kendo-ui/api/javascript/dataviz/ui/chart/configuration/theme
                                         //.Theme("sass")
                                         .Series(s => s.Line("Downloads", "Date"))
-                                        .Legend(l => l.Visible(false))
+                                        .Legend(l => l.Visible(true))
                                         .CategoryAxis(c =>
                                             c.Date()
                                             .BaseUnit(ChartAxisBaseUnit.Fit)
@@ -45,7 +45,7 @@
                                         //.Theme("sass")
                                         .AutoBind(false)
                                         .Series(s => s.Column("Views", "Date"))
-                                        .Legend(l => l.Visible(false))
+                                        .Legend(l => l.Visible(true))
                                         .CategoryAxis(c =>
                                             c.Date()
                                             .BaseUnit(ChartAxisBaseUnit.Fit)
@@ -74,8 +74,8 @@
                                             .ColumnsWidth("350px")
                                             .Containers(c =>
                                             {
-                                                c.Add().Header(h => h.Text("Weekly Recap-Downloads")).BodyTemplateId("downloads-chart-template").ColSpan(2).RowSpan(3);
-                                                c.Add().Header(h => h.Text("Performance Trend")).BodyTemplateId("performance-chart-template").ColSpan(2).RowSpan(3);
+                                                c.Add().Header(h => h.Text("Days to Resolve Tickets")).BodyTemplateId("downloads-chart-template").ColSpan(2).RowSpan(3);
+                                                c.Add().Header(h => h.Text("Days to Resolve Tickets")).BodyTemplateId("performance-chart-template").ColSpan(2).RowSpan(3);
                                              })
                                             .Reorderable(true)
                                             .Resizable(true)
