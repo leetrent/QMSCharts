@@ -1,62 +1,28 @@
 ﻿using Kendo.Mvc.UI;
 using Microsoft.AspNetCore.Mvc;
 using QMSCharts.Models;
+using QMSCharts.Services;
 using System.Globalization;
 
 namespace QMSCharts.Controllers
 {
     public class QMSDashboardController : Controller
     {
+        public readonly QMSDashboardService _service;
+        public QMSDashboardController()
+        {
+            _service = new QMSDashboardService();
+        }
+
         public ActionResult TotalsByStatus_Read([DataSourceRequest] DataSourceRequest request)
         {
-            return Json(GetTotalsByStatus());
+            return Json(_service.GetTotalsByStatus());
         }
 
-        private IEnumerable<TotalByStatus> GetTotalsByStatus()
+        public ActionResult DatysToResolveTickets_Read([DataSourceRequest] DataSourceRequest request)
         {
-            var totalsByStatus = new TotalByStatus[]
-            {
-                new TotalByStatus(1, "Assigned", 79),
-                new TotalByStatus(2, "Closed - Action Completed", 1916),
-                new TotalByStatus(3, "Closed - No Action Required", 234),
-                new TotalByStatus(4, "Draft", 10),
-                new TotalByStatus(5, "Pending Review", 11),
-                new TotalByStatus(6, "Returned", 92),
-                new TotalByStatus(7, "Unassigned", 5),
-            };
-
-            int grandTotal = 0;
-            foreach (var tbs in totalsByStatus)
-            {
-                grandTotal += tbs.Total;
-            }
-
-            string logSnippet = "\n[QMSDashboardController][GetTotalsByStatus] =>";
-            //Console.WriteLine($"\n{logSnippet} (grandTotal: {grandTotal})");
-
-            foreach (var tbs in totalsByStatus)
-            {
-                tbs.Percentage = (double)tbs.Total / (double)grandTotal;
-                //string percentageAsString = tbs.Percentage.ToString("P1", CultureInfo.InvariantCulture);
-                string percentageAsString = tbs.Percentage.ToString("P1", CultureInfo.CreateSpecificCulture("en-US"));
-
-                tbs.StatusAndPercentage = $"{tbs.Status} ({percentageAsString})";
-
-
-                Console.WriteLine("---------------------------------------------------------");
-                Console.WriteLine($"{logSnippet} (tbs.Total)..............: {tbs.Total})");
-                Console.WriteLine($"{logSnippet} (grandTotal).............: {grandTotal})");
-                Console.WriteLine($"{logSnippet} (tbs.Percentage).........: {tbs.Percentage})");
-                Console.WriteLine($"{logSnippet} (percentageAsString).....: {percentageAsString})");
-                Console.WriteLine($"{logSnippet} (tbs.StatusAndPercentage): {tbs.StatusAndPercentage})");
-                Console.WriteLine("---------------------------------------------------------");
-
-                //Console.WriteLine($"\n{logSnippet} (tbs.Percentage: {tbs.Percentage})");
-                //Console.WriteLine($"\n{logSnippet} (tbs.Percentage: {tbs.Percentage})");
-                //Console.WriteLine($"\n{logSnippet} (tbs.Percentage: {tbs.Percentage.ToString("P1", CultureInfo.InvariantCulture)})");
-            }
-
-            return totalsByStatus;
+            return Json(_service.GetDaysToResolveTickets());
         }
+
     }
 }
