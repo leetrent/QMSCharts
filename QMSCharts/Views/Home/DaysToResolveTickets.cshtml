@@ -19,7 +19,7 @@
 <script id="downloads-chart-template" type="text/x-kendo-template">
     @(Html.Kendo().Chart<DaysToResolveTicket>()
         .Name("downloads")
-        .Series(s => s.Line("Total", "DaysOldRange"))
+        .Series(s => s.Column("Total", "DaysOldRange"))
         .Legend(l => l.Visible(true))
         .CategoryAxis(axis => axis.Categories(model => model.DaysOldRange))
         .ValueAxis(v => v.Min(0).Max(800).Labels(l => l.Step(2)))
@@ -31,7 +31,7 @@
 <script id="performance-chart-template" type="text/x-kendo-template">
     @(Html.Kendo().Chart<DaysToResolveTicket>()
         .Name("performance")
-        .Series(s => s.Column("Total", "DaysOldRange"))
+        .Series(s => s.Line("Total", "DaysOldRange"))
         .Legend(l => l.Visible(true))
         .CategoryAxis(axis => axis.Categories(model => model.DaysOldRange))
         .ValueAxis(v => v.Min(0).Max(800).Labels(l => l.Step(2)))
