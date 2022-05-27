@@ -10,8 +10,8 @@ namespace QMSCharts.Services
             var daysToResolveTickets = new DaysToResolveTicket[]
             {
                 new DaysToResolveTicket(1, "0-1 Days", 679),
-                new DaysToResolveTicket(2, "02-5 Days", 441),
-                new DaysToResolveTicket(3, "06-10 Days", 372),
+                new DaysToResolveTicket(2, "2-5 Days", 441),
+                new DaysToResolveTicket(3, "6-10 Days", 372),
                 new DaysToResolveTicket(4, "11-15 Days", 177),
                 new DaysToResolveTicket(5, "16-20 Days", 90),
                 new DaysToResolveTicket(6, "21-25 Days", 72),
