@@ -28,6 +28,11 @@ namespace QMSCharts.Controllers
             return View();
         }
 
+        public IActionResult DaysToResolveTickets()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();
