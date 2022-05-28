@@ -43,6 +43,24 @@ namespace QMSCharts.Services
             return daysToResolveTickets;
         }
 
+        public IEnumerable<QMSChart> GetDaysToResolveTicketsOnceAtPPRM()
+        {
+            var daysToResolveTicketsOnceAtPPRM = new QMSChart[]
+            {
+                new QMSChart(1,  "0-1", 960),
+                new QMSChart(2,  "2-5", 382),
+                new QMSChart(3,  "6-10", 289),
+                new QMSChart(4,  "11-15", 145),
+                new QMSChart(5,  "16-20", 68),
+                new QMSChart(6,  "21-25", 55),
+                new QMSChart(7,  "26-30", 48),
+                new QMSChart(8,  "31+", 109),
+                new QMSChart(9,  "60+", 40),
+                new QMSChart(10, "90+", 54),
+            };
+
+            return daysToResolveTicketsOnceAtPPRM;
+        }
 
         public IEnumerable<QMSChart> GetTotalsByOrganization()
         {
