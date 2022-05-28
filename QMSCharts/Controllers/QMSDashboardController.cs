@@ -23,6 +23,10 @@ namespace QMSCharts.Controllers
         {
             return Json(_service.GetDaysToResolveTickets());
         }
+        public ActionResult DaysToResolveTicketsOnceAtPPRM_Read([DataSourceRequest] DataSourceRequest request)
+        {
+            return Json(_service.GetDaysToResolveTicketsOnceAtPPRM());
+        }
         public ActionResult TotalsByOrganization_Read([DataSourceRequest] DataSourceRequest request)
         {
             return Json(_service.GetTotalsByOrganization());

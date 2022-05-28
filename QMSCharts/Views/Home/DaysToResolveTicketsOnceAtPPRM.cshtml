@@ -21,9 +21,9 @@
         .Name("downloads")
         .Series(s => s.Column(model => model.Value, model => model.Key))
         .Legend(l => l.Visible(false))
-        .CategoryAxis(axis => axis.Categories(model => model.Key).Title(t=>t.Text("Days Open")))
-        .ValueAxis(v => v.Min(0).Max(800).Labels(l => l.Step(2)).Title(t=>t.Text("Total")))
-        .DataSource(d => d.Read("DaysToResolveTickets_Read", "QMSDashboard"))
+        .CategoryAxis(axis => axis.Categories(model => model.Key).Title(t=>t.Text("Days at PPRM")))
+        .ValueAxis(v => v.Min(0).Max(1000).Labels(l => l.Step(1)).Title(t=>t.Text("Total")))
+        .DataSource(d => d.Read("DaysToResolveTicketsOnceAtPPRM_Read", "QMSDashboard"))
         .HtmlAttributes(new { style = "height:100%;width:100%;" })
         .ToClientTemplate()
     )
@@ -33,9 +33,9 @@
         .Name("performance")
         .Series(s => s.Line(model => model.Value, model => model.Key))
         .Legend(l => l.Visible(false))
-        .CategoryAxis(axis => axis.Categories(model => model.Key).Title(t=>t.Text("Days Open")))
-        .ValueAxis(v => v.Min(0).Max(800).Labels(l => l.Step(2)).Title(t=>t.Text("Total")))
-        .DataSource(d => d.Read("DaysToResolveTickets_Read", "QMSDashboard"))
+        .CategoryAxis(axis => axis.Categories(model => model.Key).Title(t=>t.Text("Days at PPRM")))
+        .ValueAxis(v => v.Min(0).Max(1000).Labels(l => l.Step(1)).Title(t=>t.Text("Total")))
+        .DataSource(d => d.Read("DaysToResolveTicketsOnceAtPPRM_Read", "QMSDashboard"))
         .HtmlAttributes(new { style = "height:100%;width:100%;" })
         .ToClientTemplate()
     )
@@ -49,8 +49,8 @@
         .ColumnsWidth("350px")
         .Containers(c =>
         {
-            c.Add().Header(h => h.Text("Days to Resolve Tickets")).BodyTemplateId("downloads-chart-template").ColSpan(2).RowSpan(3);
-            c.Add().Header(h => h.Text("Days to Resolve Tickets")).BodyTemplateId("performance-chart-template").ColSpan(2).RowSpan(3);
+            c.Add().Header(h => h.Text("Days to Resolve Tickets Once at PPRM")).BodyTemplateId("downloads-chart-template").ColSpan(2).RowSpan(3);
+            c.Add().Header(h => h.Text("Days to Resolve Tickets Once at PPRM")).BodyTemplateId("performance-chart-template").ColSpan(2).RowSpan(3);
             })
         .Reorderable(true)
         .Resizable(true)
