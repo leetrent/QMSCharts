@@ -17,11 +17,11 @@
 
 <!-- container chart templates -->
 <script id="downloads-chart-template" type="text/x-kendo-template">
-    @(Html.Kendo().Chart<DaysToResolveTicket>()
+    @(Html.Kendo().Chart<QMSChart>()
         .Name("downloads")
-        .Series(s => s.Column("Total", "DaysOldRange"))
+        .Series(s => s.Column("Value", "Key"))
         .Legend(l => l.Visible(false))
-        .CategoryAxis(axis => axis.Categories(model => model.DaysOldRange).Title(t=>t.Text("Days Open")))
+        .CategoryAxis(axis => axis.Categories(model => model.Key).Title(t=>t.Text("Days Open")))
         .ValueAxis(v => v.Min(0).Max(800).Labels(l => l.Step(2)).Title(t=>t.Text("Total")))
         .DataSource(d => d.Read("DaysToResolveTickets_Read", "QMSDashboard"))
         .HtmlAttributes(new { style = "height:100%;width:100%;" })
@@ -29,11 +29,11 @@
     )
 </script>
 <script id="performance-chart-template" type="text/x-kendo-template">
-    @(Html.Kendo().Chart<DaysToResolveTicket>()
+    @(Html.Kendo().Chart<QMSChart>()
         .Name("performance")
         .Series(s => s.Line("Total", "DaysOldRange"))
         .Legend(l => l.Visible(false))
-        .CategoryAxis(axis => axis.Categories(model => model.DaysOldRange).Title(t=>t.Text("Days Open")))
+        .CategoryAxis(axis => axis.Categories(model => model.Key).Title(t=>t.Text("Days Open")))
         .ValueAxis(v => v.Min(0).Max(800).Labels(l => l.Step(2)).Title(t=>t.Text("Total")))
         .DataSource(d => d.Read("DaysToResolveTickets_Read", "QMSDashboard"))
         .HtmlAttributes(new { style = "height:100%;width:100%;" })
