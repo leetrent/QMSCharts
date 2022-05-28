@@ -29,15 +29,15 @@ namespace QMSCharts.Services
         {
             var daysToResolveTickets = new QMSChart[]
             {
-                new QMSChart(1, "0-1 Days", 679),
-                new QMSChart(2, "2-5 Days", 441),
-                new QMSChart(3, "6-10 Days", 372),
-                new QMSChart(4, "11-15 Days", 177),
-                new QMSChart(5, "16-20 Days", 90),
-                new QMSChart(6, "21-25 Days", 72),
-                new QMSChart(7, "31+ Days", 138),
-                new QMSChart(8, "60+ Days", 54),
-                new QMSChart(9, "90+ Days", 67),
+                new QMSChart(1, "0-1", 679),
+                new QMSChart(2, "2-5", 441),
+                new QMSChart(3, "6-10", 372),
+                new QMSChart(4, "11-15", 177),
+                new QMSChart(5, "16-20", 90),
+                new QMSChart(6, "21-25", 72),
+                new QMSChart(7, "31+", 138),
+                new QMSChart(8, "60+", 54),
+                new QMSChart(9, "90+", 67),
             };
 
             return daysToResolveTickets;
