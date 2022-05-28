@@ -62,6 +62,24 @@ namespace QMSCharts.Services
             return daysToResolveTicketsOnceAtPPRM;
         }
 
+        
+        public IEnumerable<QMSChart> TicketsByOrganizationCreatedAt()
+        {
+            var ticketsByOrganizationCreatedAt = new QMSChart[]
+            {
+                new QMSChart(1,  "Benefits and Retiremements Center", 239),
+                new QMSChart(2,  "CABS HR Service Center", 217),
+                new QMSChart(3,  "Executive Resources Service Center", 13),
+                new QMSChart(4,  "FAS Service Center", 852),
+                new QMSChart(5,  "National Recruitment Center", 18),
+                new QMSChart(6,  "Other/Pseudo SC", 13),
+                new QMSChart(7,  "PBS Service Center", 671),
+                new QMSChart(8,  "Staff Offices Service Center", 324),
+            };
+
+            return ticketsByOrganizationCreatedAt;
+        }
+
         public IEnumerable<QMSChart> GetTotalsByOrganization()
         {
             var totalsByOrganization = new QMSChart[]
