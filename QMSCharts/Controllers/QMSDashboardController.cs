@@ -35,6 +35,10 @@ namespace QMSCharts.Controllers
         {
             return Json(_service.GetTotalsByOrganization());
         }
+        public ActionResult TicketsByNOA_Read([DataSourceRequest] DataSourceRequest request)
+        {
+            return Json(_service.GetTicketsByNOA());
+        }
 
     }
 }
