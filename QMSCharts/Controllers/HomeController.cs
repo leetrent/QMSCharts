@@ -47,6 +47,11 @@ namespace QMSCharts.Controllers
             return View();
         }
 
+        public IActionResult TicketsByNOA()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();

@@ -5,26 +5,6 @@ namespace QMSCharts.Services
 {
     public class QMSDashboardService
     {
-        //public IEnumerable<DaysToResolveTicket> GetDaysToResolveTickets()
-        //{
-        //    var daysToResolveTickets = new DaysToResolveTicket[]
-        //    {
-        //        new DaysToResolveTicket(1, "0-1 Days", 679),
-        //        new DaysToResolveTicket(2, "2-5 Days", 441),
-        //        new DaysToResolveTicket(3, "6-10 Days", 372),
-        //        new DaysToResolveTicket(4, "11-15 Days", 177),
-        //        new DaysToResolveTicket(5, "16-20 Days", 90),
-        //        new DaysToResolveTicket(6, "21-25 Days", 72),
-        //        new DaysToResolveTicket(7, "31+ Days", 138),
-        //        new DaysToResolveTicket(8, "60+ Days", 54),
-        //        new DaysToResolveTicket(9, "90+ Days", 67),
-        //    };
-
-        //    Console.WriteLine("[QMSDashboardService][GetDaysToResolveTickets] =>");
-
-        //    return daysToResolveTickets;
-        //}
-
         public IEnumerable<QMSChart> GetDaysToResolveTickets()
         {
             var daysToResolveTickets = new QMSChart[]
@@ -137,33 +117,45 @@ namespace QMSCharts.Services
             return totalsByStatus;
         }
 
-        //public IEnumerable<TotalByStatus> GetTotalsByStatus()
-        //{
-        //    var totalsByStatus = new TotalByStatus[]
-        //    {
-        //        new TotalByStatus(1, "Assigned", 79),
-        //        new TotalByStatus(2, "Closed - Action Completed", 1916),
-        //        new TotalByStatus(3, "Closed - No Action Required", 234),
-        //        new TotalByStatus(4, "Draft", 10),
-        //        new TotalByStatus(5, "Pending Review", 11),
-        //        new TotalByStatus(6, "Returned", 92),
-        //        new TotalByStatus(7, "Unassigned", 5),
-        //    };
+        public IEnumerable<QMSChart> GetTicketsByNOA()
+        {
+            var ticketsByNOA= new QMSChart[]
+            {
+                new QMSChart(1,  "0", 1),
+                new QMSChart(2,  "100", 52),
+                new QMSChart(3,  "101", 196),
+                new QMSChart(4,  "108", 21),
+                new QMSChart(5,  "115", 19),
+                new QMSChart(6,  "122", 1),
+                new QMSChart(7,  "130", 173),
+                new QMSChart(8,  "140", 27),
+                new QMSChart(9,  "141", 6),
+                new QMSChart(10,  "142", 1),
+                new QMSChart(11,  "143", 1),
+                new QMSChart(12,  "170", 188),
+                new QMSChart(13,  "171", 72),
+                new QMSChart(14,  "190", 17),
+                new QMSChart(15,  "292", 5),
+                new QMSChart(16,  "302", 1),
+                new QMSChart(17,  "304", 1),
+                new QMSChart(18,  "317", 7),
+                new QMSChart(19,  "330", 1),
+                new QMSChart(20,  "352", 7),
+                new QMSChart(21,  "355", 3),
+                new QMSChart(22,  "385", 4),
+                new QMSChart(23,  "430", 1),
+                new QMSChart(24,  "460", 9),
+                new QMSChart(25,  "473", 12),
+                //new QMSChart(,  "", ),
+                //new QMSChart(,  "", ),
+                //new QMSChart(,  "", ),
+                //new QMSChart(,  "", ),
+                //new QMSChart(,  "", ),
 
-        //    int grandTotal = 0;
-        //    foreach (var tbs in totalsByStatus)
-        //    {
-        //        grandTotal += tbs.Total;
-        //    }
+            };
 
-        //    foreach (var tbs in totalsByStatus)
-        //    {
-        //        tbs.Percentage = (double)tbs.Total / (double)grandTotal;
-        //        string percentageAsString = tbs.Percentage.ToString("P1", CultureInfo.CreateSpecificCulture("en-US"));
-        //        tbs.StatusAndPercentage = $"{tbs.Status} ({percentageAsString})";
-        //    }
+            return ticketsByNOA;
+        }
 
-        //    return totalsByStatus;
-        //}
     }
 }
