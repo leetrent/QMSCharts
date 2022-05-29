@@ -37,7 +37,7 @@ namespace QMSCharts.Controllers
         }
         public ActionResult TicketsByNOA_Read([DataSourceRequest] DataSourceRequest request)
         {
-            return Json(_service.GetTicketsByNOA);
+            return Json(_service.GetTicketsByNOA());
         }
 
     }

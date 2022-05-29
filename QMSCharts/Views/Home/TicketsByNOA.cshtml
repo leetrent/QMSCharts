@@ -21,9 +21,9 @@
         .Name("downloads")
         .Series(s => s.Column(model => model.Value, model => model.Key))
         .Legend(l => l.Visible(false))
-        .CategoryAxis(axis => axis.Categories(model => model.Key).Title(t=>t.Text("Created At")).Labels(labels => labels.Rotation(-45)))
+        .CategoryAxis(axis => axis.Categories(model => model.Key).Title(t=>t.Text("NOA")).Labels(labels => labels.Rotation(-90)))
         .ValueAxis(v => v.Min(0).Max(1000).Labels(l => l.Step(1)).Title(t=>t.Text("Total")))
-        .DataSource(d => d.Read("TicketsByOrganizationCreatedAt_Read", "QMSDashboard"))
+        .DataSource(d => d.Read("TicketsByNOA_Read", "QMSDashboard"))
         .HtmlAttributes(new { style = "height:100%;width:100%;" })
         .ToClientTemplate()
     )
@@ -33,9 +33,9 @@
         .Name("performance")
         .Series(s => s.Line(model => model.Value, model => model.Key))
         .Legend(l => l.Visible(false))
-        .CategoryAxis(axis => axis.Categories(model => model.Key).Title(t=>t.Text("Created At")).Labels(labels => labels.Rotation(-45)))
+        .CategoryAxis(axis => axis.Categories(model => model.Key).Title(t=>t.Text("NOA")).Labels(labels => labels.Rotation(-90)))
         .ValueAxis(v => v.Min(0).Max(1000).Labels(l => l.Step(1)).Title(t=>t.Text("Total")))
-        .DataSource(d => d.Read("TicketsByOrganizationCreatedAt_Read", "QMSDashboard"))
+        .DataSource(d => d.Read("TicketsByNOA_Read", "QMSDashboard"))
         .HtmlAttributes(new { style = "height:100%;width:100%;" })
         .ToClientTemplate()
     )
@@ -49,8 +49,8 @@
         .ColumnsWidth("350px")
         .Containers(c =>
         {
-            c.Add().Header(h => h.Text("Tickets by Organization Created At")).BodyTemplateId("downloads-chart-template").ColSpan(2).RowSpan(3);
-            c.Add().Header(h => h.Text("Tickets by Organization Created At")).BodyTemplateId("performance-chart-template").ColSpan(2).RowSpan(3);
+            c.Add().Header(h => h.Text("Tickets by NOA")).BodyTemplateId("downloads-chart-template").ColSpan(4).RowSpan(3);
+            c.Add().Header(h => h.Text("Tickets by NOAt")).BodyTemplateId("performance-chart-template").ColSpan(4).RowSpan(3);
             })
         .Reorderable(true)
         .Resizable(true)
