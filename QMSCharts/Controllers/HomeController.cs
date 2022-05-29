@@ -36,6 +36,12 @@ namespace QMSCharts.Controllers
         {
             return View();
         }
+        
+        public IActionResult TicketsByOrganizationCreatedAt()
+        {
+            return View();
+        }
+
         public IActionResult TotalsByOrganization()
         {
             return View();
