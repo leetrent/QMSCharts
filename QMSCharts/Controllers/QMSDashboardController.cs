@@ -39,6 +39,9 @@ namespace QMSCharts.Controllers
         {
             return Json(_service.GetTicketsByNOA());
         }
-
+        public ActionResult ErrorTypeCounts_Read([DataSourceRequest] DataSourceRequest request)
+        {
+            return Json(_service.GetErrorTypeCounts());
+        }
     }
 }

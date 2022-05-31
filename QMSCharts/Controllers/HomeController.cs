@@ -52,6 +52,11 @@ namespace QMSCharts.Controllers
             return View();
         }
 
+        public IActionResult ErrorTypeCounts()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();
