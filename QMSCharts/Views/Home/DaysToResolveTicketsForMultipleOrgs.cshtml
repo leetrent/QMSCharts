@@ -24,7 +24,7 @@
             series.Column(model => model.ValueTwo).Name("ValueTwo").CategoryField("Key");
             series.Column(model => model.ValueThree).Name("ValueThree").CategoryField("Key");
         })
-        .Legend(l => l.Visible(false))
+        .Legend(legend => legend.Position(ChartLegendPosition.Top))
         .CategoryAxis(axis => axis.Categories(model => model.Key).Title(t=>t.Text("Days Open")))
         .ValueAxis(v => v.Min(0).Max(800).Labels(l => l.Step(2)).Title(t=>t.Text("Total")))
         .DataSource(d => d.Read("DaysToResolveTicketsForMultipleOrgs_Read", "QMSDashboard"))
