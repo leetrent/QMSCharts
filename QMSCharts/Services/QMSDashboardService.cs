@@ -198,5 +198,53 @@ namespace QMSCharts.Services
             return ticketsByNOA;
         }
 
+        public IEnumerable<QMSChart> GetErrorTypeCounts()
+        {
+            var ticketsByNOA = new QMSChart[]
+            {
+                new QMSChart(1,  "Appointment Type", 91),
+                new QMSChart(2,  "Bargaining Unit Status", 84),
+                new QMSChart(3,  "Date of Birth", 6),
+                new QMSChart(4,  "Department/Organization", 189),
+                new QMSChart(5,  "Double Encumbered", 3),
+                new QMSChart(6,  "Effective Date", 104),
+                new QMSChart(7,  "FEGLI", 50),
+                new QMSChart(8,  "FLSA Category", 21),
+                new QMSChart(9,  "Gender", 8),
+                new QMSChart(39,  "Grade", 33),
+                new QMSChart(10,  "Hours", 16),
+                new QMSChart(11,  "Legal Authority Code", 136),
+                new QMSChart(12,  "Location Code/Duty Station", 283),
+                new QMSChart(13,  "Name", 24),
+                new QMSChart(14,  "Nature of Action", 180),
+                new QMSChart(15,  "Not to Exceed Date", 86),
+                new QMSChart(16,  "Occupational Series", 25),
+                new QMSChart(17,  "Pay Plan", 9),
+                new QMSChart(18,  "Pay Rate Determinant", 8),
+                new QMSChart(19,  "Personnel Office ID", 17),
+                new QMSChart(20,  "Place of Birth", 1),
+                new QMSChart(21,  "Position Description", 144),
+                new QMSChart(22,  "Position Number", 152),
+                new QMSChart(23,  "Position Occupied", 70),
+                new QMSChart(24,  "Position Title", 75),
+                new QMSChart(25,  "Probationary/Trial Period Date", 124),
+                new QMSChart(26,  "Remarks", 140),
+                new QMSChart(27,  "Reports to", 195),
+                new QMSChart(28,  "Retirement Plan", 105),
+                new QMSChart(29,  "SSN", 8),
+                new QMSChart(30,  "Salary Admin Plan", 22),
+                new QMSChart(31,  "Security Clearance", 3),
+                new QMSChart(32,  "Service Computation Date", 122),
+                new QMSChart(33,  "Step", 127),
+                new QMSChart(34,  "Supervisor Level", 22),
+                new QMSChart(35,  "Tenure", 127),
+                new QMSChart(36,  "Veteran Preference", 41),
+                new QMSChart(37,  "WGI Date", 139),
+                new QMSChart(38,  "Work Schedule", 13),
+             };
+
+            return ticketsByNOA;
+        }
+
     }
 }
