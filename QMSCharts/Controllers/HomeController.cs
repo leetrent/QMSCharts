@@ -32,6 +32,11 @@ namespace QMSCharts.Controllers
         {
             return View();
         }
+       public IActionResult DaysToResolveTicketsForMultipleOrgs()
+        {
+            return View();
+        }
+
         public IActionResult DaysToResolveTicketsOnceAtPPRM()
         {
             return View();
