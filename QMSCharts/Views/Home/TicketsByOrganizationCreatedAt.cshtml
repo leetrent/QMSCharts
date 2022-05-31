@@ -19,7 +19,10 @@
 <script id="downloads-chart-template" type="text/x-kendo-template">
     @(Html.Kendo().Chart<QMSChart>()
         .Name("downloads")
-        .Series(s => s.Column(model => model.Value, model => model.Key))
+        .Series(s => 
+        {
+            s.Column(model => model.Value, model => model.Key).Labels(labels => labels.Background("transparent").Visible(true));
+        })
         .Legend(l => l.Visible(false))
         .CategoryAxis(axis => axis.Categories(model => model.Key).Title(t=>t.Text("Created At")).Labels(labels => labels.Rotation(-45)))
         .ValueAxis(v => v.Min(0).Max(1000).Labels(l => l.Step(1)).Title(t=>t.Text("Total")))
@@ -31,7 +34,10 @@
 <script id="performance-chart-template" type="text/x-kendo-template">
     @(Html.Kendo().Chart<QMSChart>()
         .Name("performance")
-        .Series(s => s.Line(model => model.Value, model => model.Key))
+        .Series(s => 
+        {
+            s.Line(model => model.Value, model => model.Key).Labels(labels => labels.Background("transparent").Visible(true));
+        })
         .Legend(l => l.Visible(false))
         .CategoryAxis(axis => axis.Categories(model => model.Key).Title(t=>t.Text("Created At")).Labels(labels => labels.Rotation(-45)))
         .ValueAxis(v => v.Min(0).Max(1000).Labels(l => l.Step(1)).Title(t=>t.Text("Total")))
