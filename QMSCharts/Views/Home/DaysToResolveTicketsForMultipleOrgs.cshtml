@@ -23,6 +23,11 @@
         {
             s.Column(model => model.Value, model => model.Key).Labels(labels => labels.Background("transparent").Visible(true));
         })
+        .Series(series => {
+            series.Column(model => model.Value).Name("Nuclear").CategoryField("Key");
+            series.Column(model => model.ValueTwo).Name("Hydro").CategoryField("Key");
+            series.Column(model => model.ValueThree).Name("Wind").CategoryField("Key");
+        })
         .Legend(l => l.Visible(false))
         .CategoryAxis(axis => axis.Categories(model => model.Key).Title(t=>t.Text("Days Open")))
         .ValueAxis(v => v.Min(0).Max(800).Labels(l => l.Step(2)).Title(t=>t.Text("Total")))
