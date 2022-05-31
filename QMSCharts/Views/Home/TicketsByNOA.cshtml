@@ -21,8 +21,8 @@
         .Name("downloads")
         .Series(s => s.Column(model => model.Value, model => model.Key))
         .Legend(l => l.Visible(false))
-        .CategoryAxis(axis => axis.Categories(model => model.Key).Title(t=>t.Text("NOA")).Labels(labels => labels.Rotation(-90)))
-        .ValueAxis(v => v.Min(0).Max(300).Labels(l => l.Step(2)).Title(t=>t.Text("Total")))
+        .CategoryAxis(axis => axis.Categories(model => model.Key).Title(t=>t.Text("Error Type")).Labels(labels => labels.Rotation(-90)))
+        .ValueAxis(v => v.Min(0).Max(300).Labels(l => l.Step(2)).Title(t=>t.Text("Count")))
         .DataSource(d => d.Read("TicketsByNOA_Read", "QMSDashboard"))
         .HtmlAttributes(new { style = "height:100%;width:100%;" })
         .ToClientTemplate()
@@ -33,8 +33,8 @@
         .Name("performance")
         .Series(s => s.Line(model => model.Value, model => model.Key))
         .Legend(l => l.Visible(false))
-        .CategoryAxis(axis => axis.Categories(model => model.Key).Title(t=>t.Text("NOA")).Labels(labels => labels.Rotation(-90)))
-        .ValueAxis(v => v.Min(0).Max(300).Labels(l => l.Step(2)).Title(t=>t.Text("Total")))
+        .CategoryAxis(axis => axis.Categories(model => model.Key).Title(t=>t.Text("Error Type")).Labels(labels => labels.Rotation(-90)))
+        .ValueAxis(v => v.Min(0).Max(300).Labels(l => l.Step(2)).Title(t=>t.Text("Count")))
         .DataSource(d => d.Read("TicketsByNOA_Read", "QMSDashboard"))
         .HtmlAttributes(new { style = "height:100%;width:100%;" })
         .ToClientTemplate()
@@ -50,7 +50,7 @@
         .Containers(c =>
         {
             c.Add().Header(h => h.Text("Tickets by NOA")).BodyTemplateId("downloads-chart-template").ColSpan(4).RowSpan(3);
-            c.Add().Header(h => h.Text("Tickets by NOAt")).BodyTemplateId("performance-chart-template").ColSpan(4).RowSpan(3);
+            c.Add().Header(h => h.Text("Tickets by NOA")).BodyTemplateId("performance-chart-template").ColSpan(4).RowSpan(3);
             })
         .Reorderable(true)
         .Resizable(true)
