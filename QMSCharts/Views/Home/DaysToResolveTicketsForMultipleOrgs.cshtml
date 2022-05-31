@@ -19,19 +19,15 @@
 <script id="downloads-chart-template" type="text/x-kendo-template">
     @(Html.Kendo().Chart<QMSChart>()
         .Name("downloads")
-        .Series(s => 
-        {
-            s.Column(model => model.Value, model => model.Key).Labels(labels => labels.Background("transparent").Visible(true));
-        })
         .Series(series => {
-            series.Column(model => model.Value).Name("Nuclear").CategoryField("Key");
-            series.Column(model => model.ValueTwo).Name("Hydro").CategoryField("Key");
-            series.Column(model => model.ValueThree).Name("Wind").CategoryField("Key");
+            series.Column(model => model.Value).Name("Value").CategoryField("Key");
+            series.Column(model => model.ValueTwo).Name("ValueTwo").CategoryField("Key");
+            series.Column(model => model.ValueThree).Name("ValueThree").CategoryField("Key");
         })
         .Legend(l => l.Visible(false))
         .CategoryAxis(axis => axis.Categories(model => model.Key).Title(t=>t.Text("Days Open")))
         .ValueAxis(v => v.Min(0).Max(800).Labels(l => l.Step(2)).Title(t=>t.Text("Total")))
-        .DataSource(d => d.Read("DaysToResolveTickets_Read", "QMSDashboard"))
+        .DataSource(d => d.Read("DaysToResolveTicketsForMultipleOrgs_Read", "QMSDashboard"))
         .HtmlAttributes(new { style = "height:100%;width:100%;" })
         .ToClientTemplate()
     )
@@ -60,8 +56,8 @@
         .ColumnsWidth("350px")
         .Containers(c =>
         {
-            c.Add().Header(h => h.Text("Days to Resolve Tickets")).BodyTemplateId("downloads-chart-template").ColSpan(2).RowSpan(3);
-            c.Add().Header(h => h.Text("Days to Resolve Tickets")).BodyTemplateId("performance-chart-template").ColSpan(2).RowSpan(3);
+            c.Add().Header(h => h.Text("Days to Resolve Tickets")).BodyTemplateId("downloads-chart-template").ColSpan(4).RowSpan(3);
+            c.Add().Header(h => h.Text("Days to Resolve Tickets")).BodyTemplateId("performance-chart-template").ColSpan(4).RowSpan(3);
             })
         .Reorderable(true)
         .Resizable(true)
