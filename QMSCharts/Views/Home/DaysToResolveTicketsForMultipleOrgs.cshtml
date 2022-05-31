@@ -20,9 +20,9 @@
     @(Html.Kendo().Chart<QMSChart>()
         .Name("downloads")
         .Series(series => {
-            series.Column(model => model.Value).Name("Value").CategoryField("Key");
-            series.Column(model => model.ValueTwo).Name("ValueTwo").CategoryField("Key");
-            series.Column(model => model.ValueThree).Name("ValueThree").CategoryField("Key");
+            series.Column(model => model.Value).Name("Org 1").CategoryField("Key");
+            series.Column(model => model.ValueTwo).Name("Org 2").CategoryField("Key");
+            series.Column(model => model.ValueThree).Name("Org 3").CategoryField("Key");
         })
         .Legend(legend => legend.Position(ChartLegendPosition.Top))
         .CategoryAxis(axis => axis.Categories(model => model.Key).Title(t=>t.Text("Days Open")))
