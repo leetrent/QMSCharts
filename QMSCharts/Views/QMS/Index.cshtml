@@ -211,6 +211,36 @@
         .ToClientTemplate()
     )
 </script>
+<script id="error-type-counts-bar-template" type="text/x-kendo-template">
+    @(Html.Kendo().Chart<QMSChart>()
+        .Name("error-type-counts-bar")
+        .Series(s => 
+        {
+            s.Column(model => model.Value, model => model.Key).Labels(labels => labels.Background("transparent").Visible(true));
+        })
+        .Legend(l => l.Visible(false))
+        .CategoryAxis(axis => axis.Categories(model => model.Key).Title(t=>t.Text("NOA")).Labels(labels => labels.Rotation(-45)))
+        .ValueAxis(v => v.Min(0).Max(300).Labels(l => l.Step(2)).Title(t=>t.Text("Total")))
+        .DataSource(d => d.Read("ErrorTypeCounts_Read", "QMSDashboard"))
+        .HtmlAttributes(new { style = "height:100%;width:100%;" })
+        .ToClientTemplate()
+    )
+</script>
+<script id="error-type-counts-line-template" type="text/x-kendo-template">
+    @(Html.Kendo().Chart<QMSChart>()
+        .Name("error-type-counts-line")
+        .Series(s => 
+        {
+            s.Line(model => model.Value, model => model.Key).Labels(labels => labels.Background("transparent").Visible(true));
+        })
+        .Legend(l => l.Visible(false))
+        .CategoryAxis(axis => axis.Categories(model => model.Key).Title(t=>t.Text("NOA")).Labels(labels => labels.Rotation(-45)))
+        .ValueAxis(v => v.Min(0).Max(300).Labels(l => l.Step(2)).Title(t=>t.Text("Total")))
+        .DataSource(d => d.Read("ErrorTypeCounts_Read", "QMSDashboard"))
+        .HtmlAttributes(new { style = "height:100%;width:100%;" })
+        .ToClientTemplate()
+    )
+</script>
 
 <div class="d-flex justify-content-center">
     @(Html.Kendo().TileLayout()
@@ -232,6 +262,8 @@
             c.Add().Header(h => h.Text("Tickets by Organization Created At")).BodyTemplateId("tickets-by-organization-created-at-line-template").ColSpan(2).RowSpan(3);
             c.Add().Header(h => h.Text("Tickets by NOA")).BodyTemplateId("tickets-by-noa-bar-template").ColSpan(4).RowSpan(3);
             c.Add().Header(h => h.Text("Tickets by NOA")).BodyTemplateId("tickets-by-noa-line-template").ColSpan(4).RowSpan(3);
+            c.Add().Header(h => h.Text("Error Type Counts")).BodyTemplateId("error-type-counts-bar-template").ColSpan(4).RowSpan(3);
+            c.Add().Header(h => h.Text("Error Type Counts")).BodyTemplateId("error-type-counts-line-template").ColSpan(4).RowSpan(3);
         })
         .Reorderable(true)
         .Resizable(true)
