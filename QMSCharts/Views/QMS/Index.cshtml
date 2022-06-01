@@ -18,7 +18,7 @@
 <!-- container chart templates -->
 <script id="days-to-resolve-tickets-bar-template" type="text/x-kendo-template">
     @(Html.Kendo().Chart<QMSChart>()
-        .Name("downloads")
+        .Name("days-to-resolve-tickets-bar")
         .Series(s => 
         {
             s.Column(model => model.Value, model => model.Key).Labels(labels => labels.Background("transparent").Visible(true));
@@ -33,7 +33,7 @@
 </script>
 <script id="days-to-resolve-tickets-line-template" type="text/x-kendo-template">
     @(Html.Kendo().Chart<QMSChart>()
-        .Name("performance")
+        .Name("days-to-resolve-tickets-line")
         .Series(s => 
         {
             s.Line(model => model.Value, model => model.Key).Labels(labels => labels.Background("transparent").Visible(true));
@@ -51,7 +51,7 @@
 </script>
 <script id="totals-by-status-pie-template" type="text/x-kendo-template">
     @(Html.Kendo().Chart()
-        .Name("devices")
+        .Name("totals-by-status-pie")
         .Series(s => s.Pie("Value", "Key")
             .AutoFit()
             .Labels(labels => labels
@@ -69,7 +69,7 @@
 </script>
 <script id="totals-by-status-donut-template" type="text/x-kendo-template">
     @(Html.Kendo().Chart<QMSChart>()
-        .Name("platforms")
+        .Name("totals-by-status-donut")
         .Series(s =>
             s.Donut(model => model.Value, model => model.Key)
             .AutoFit()
@@ -80,6 +80,42 @@
             .Background("transparent"))
         )
         .DataSource(d => d.Read("TotalsByStatus_Read", "QMSDashboard"))
+        .Legend(l => l.Visible(false))
+        .HtmlAttributes(new { style = "height:100%;width:100%;" })
+        .ToClientTemplate()
+    )
+</script>
+<script id="totals-by-organization-pie-template" type="text/x-kendo-template">
+    @(Html.Kendo().Chart()
+        .Name("totals-by-organization-pie")
+        .Series(s => s.Pie("Value", "Key")
+            .AutoFit()
+            .Labels(labels => labels
+            .Visible(true)
+            .TemplateId("donut-labels")
+            .Background("transparent")
+            .Position(ChartSeriesLabelsPosition.OutsideEnd)
+            )
+        )
+        .Legend(l => l.Visible(false))
+        .DataSource(d => d.Read("TotalsByOrganization_Read", "QMSDashboard"))
+        .HtmlAttributes(new { style = "height:100%;width:100%;" })
+        .ToClientTemplate()
+    )
+</script>
+<script id="totals-by-organization-donut-template" type="text/x-kendo-template">
+    @(Html.Kendo().Chart<QMSChart>()
+        .Name("totals-by-organization-donut")
+        .Series(s =>
+            s.Donut(model => model.Value, model => model.Key)
+            .AutoFit()
+            .Labels(labels => labels
+            .Visible(true)
+            .TemplateId("donut-labels")
+            .Position(ChartSeriesLabelsPosition.OutsideEnd)
+            .Background("transparent"))
+        )
+        .DataSource(d => d.Read("TotalsByOrganization_Read", "QMSDashboard"))
         .Legend(l => l.Visible(false))
         .HtmlAttributes(new { style = "height:100%;width:100%;" })
         .ToClientTemplate()
@@ -98,6 +134,8 @@
             c.Add().Header(h => h.Text("Days to Resolve Tickets")).BodyTemplateId("days-to-resolve-tickets-line-template").ColSpan(2).RowSpan(3);
             c.Add().Header(h => h.Text("Totals by Status")).BodyTemplateId("totals-by-status-pie-template").ColSpan(2).RowSpan(2);
             c.Add().Header(h => h.Text("Totals by Status")).BodyTemplateId("totals-by-status-donut-template").ColSpan(2).RowSpan(2);
+            c.Add().Header(h => h.Text("Totals by Organization")).BodyTemplateId("totals-by-organization-pie-template").ColSpan(2).RowSpan(2);
+            c.Add().Header(h => h.Text("Totals by Organization")).BodyTemplateId("totals-by-organization-donut-template").ColSpan(2).RowSpan(2);
         })
         .Reorderable(true)
         .Resizable(true)
