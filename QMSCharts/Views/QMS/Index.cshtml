@@ -15,7 +15,6 @@
     }
 </style>
 
-<!-- container chart templates -->
 <script id="days-to-resolve-tickets-bar-template" type="text/x-kendo-template">
     @(Html.Kendo().Chart<QMSChart>()
         .Name("days-to-resolve-tickets-bar")
@@ -44,6 +43,39 @@
         .DataSource(d => d.Read("DaysToResolveTickets_Read", "QMSDashboard"))
         .HtmlAttributes(new { style = "height:100%;width:100%;" })
         .ToClientTemplate()
+    )
+</script>
+<script id="days-to-resolve-tickets-bar-template-multi" type="text/x-kendo-template">
+    @(Html.Kendo().Chart<QMSChart>()
+        .Name("days-to-resolve-tickets-bar-multi")
+        .Series(series => {
+            series.Column(model => model.Value).Name("Organization 1").CategoryField("Key").Labels(labels => labels.Background("transparent").Visible(true));
+            series.Column(model => model.ValueTwo).Name("Organization 2").CategoryField("Key").Labels(labels => labels.Background("transparent").Visible(true));;
+            series.Column(model => model.ValueThree).Name("Organization 3").CategoryField("Key").Labels(labels => labels.Background("transparent").Visible(true));;
+        })
+        .Legend(legend => legend.Position(ChartLegendPosition.Top))
+        .CategoryAxis(axis => axis.Categories(model => model.Key).Title(t=>t.Text("Days Open")))
+        .ValueAxis(v => v.Min(0).Max(800).Labels(l => l.Step(2)).Title(t=>t.Text("Total")))
+        .DataSource(d => d.Read("DaysToResolveTicketsForMultipleOrgs_Read", "QMSDashboard"))
+        .HtmlAttributes(new { style = "height:100%;width:100%;" })
+        .ToClientTemplate()
+    )
+</script>
+<script id="days-to-resolve-tickets-line-template-multi" type="text/x-kendo-template">
+    @(Html.Kendo().Chart<QMSChart>()
+        .Name("days-to-resolve-tickets-line-multi")
+        .Series(series => {
+            series.Line(model => model.Value).Name("Organization 1").CategoryField("Key").Labels(labels => labels.Background("transparent").Visible(true));;
+            series.Line(model => model.ValueTwo).Name("Organization 2").CategoryField("Key").Labels(labels => labels.Background("transparent").Visible(true));;
+            series.Line(model => model.ValueThree).Name("Organization 3").CategoryField("Key").Labels(labels => labels.Background("transparent").Visible(true));;
+        })
+        .Legend(legend => legend.Position(ChartLegendPosition.Top))
+        .CategoryAxis(axis => axis.Categories(model => model.Key).Title(t=>t.Text("Days Open")))
+        .ValueAxis(v => v.Min(0).Max(800).Labels(l => l.Step(2)).Title(t=>t.Text("Total")))
+        .DataSource(d => d.Read("DaysToResolveTicketsForMultipleOrgs_Read", "QMSDashboard"))
+        .HtmlAttributes(new { style = "height:100%;width:100%;" })
+        .ToClientTemplate()
+    )
     )
 </script>
 <script id="donut-labels" type="text/x-kendo-template">
@@ -252,6 +284,8 @@
         {
             c.Add().Header(h => h.Text("Days to Resolve Tickets")).BodyTemplateId("days-to-resolve-tickets-bar-template").ColSpan(2).RowSpan(3);
             c.Add().Header(h => h.Text("Days to Resolve Tickets")).BodyTemplateId("days-to-resolve-tickets-line-template").ColSpan(2).RowSpan(3);
+            c.Add().Header(h => h.Text("Days to Resolve Tickets")).BodyTemplateId("days-to-resolve-tickets-bar-template-multi").ColSpan(4).RowSpan(3);
+            c.Add().Header(h => h.Text("Days to Resolve Tickets")).BodyTemplateId("days-to-resolve-tickets-line-template-multi").ColSpan(4).RowSpan(3);
             c.Add().Header(h => h.Text("Totals by Status")).BodyTemplateId("totals-by-status-pie-template").ColSpan(2).RowSpan(3);
             c.Add().Header(h => h.Text("Totals by Status")).BodyTemplateId("totals-by-status-donut-template").ColSpan(2).RowSpan(3);
             c.Add().Header(h => h.Text("Totals by Organization")).BodyTemplateId("totals-by-organization-pie-template").ColSpan(2).RowSpan(3);
