@@ -121,6 +121,36 @@
         .ToClientTemplate()
     )
 </script>
+<script id="days-to-resolve-tickets-once-at-pprm-bar-template" type="text/x-kendo-template">
+    @(Html.Kendo().Chart<QMSChart>()
+        .Name("days-to-resolve-tickets-once-at-pprm-bar")
+        .Series(s => 
+        {
+            s.Column(model => model.Value, model => model.Key).Labels(labels => labels.Background("transparent").Visible(true));
+        })
+        .Legend(l => l.Visible(false))
+        .CategoryAxis(axis => axis.Categories(model => model.Key).Title(t=>t.Text("Days at PPRM")))
+        .ValueAxis(v => v.Min(0).Max(1000).Labels(l => l.Step(1)).Title(t=>t.Text("Total")))
+        .DataSource(d => d.Read("DaysToResolveTicketsOnceAtPPRM_Read", "QMSDashboard"))
+        .HtmlAttributes(new { style = "height:100%;width:100%;" })
+        .ToClientTemplate()
+    )
+</script>
+<script id="days-to-resolve-tickets-once-at-pprm-line-template" type="text/x-kendo-template">
+    @(Html.Kendo().Chart<QMSChart>()
+        .Name("days-to-resolve-tickets-once-at-pprm-line")
+        .Series(s => 
+        {
+            s.Line(model => model.Value, model => model.Key).Labels(labels => labels.Background("transparent").Visible(true));
+        })
+        .Legend(l => l.Visible(false))
+        .CategoryAxis(axis => axis.Categories(model => model.Key).Title(t=>t.Text("Days at PPRM")))
+        .ValueAxis(v => v.Min(0).Max(1000).Labels(l => l.Step(1)).Title(t=>t.Text("Total")))
+        .DataSource(d => d.Read("DaysToResolveTicketsOnceAtPPRM_Read", "QMSDashboard"))
+        .HtmlAttributes(new { style = "height:100%;width:100%;" })
+        .ToClientTemplate()
+    )
+</script>
 
 <div class="d-flex justify-content-center">
     @(Html.Kendo().TileLayout()
@@ -132,10 +162,12 @@
         {
             c.Add().Header(h => h.Text("Days to Resolve Tickets")).BodyTemplateId("days-to-resolve-tickets-bar-template").ColSpan(2).RowSpan(3);
             c.Add().Header(h => h.Text("Days to Resolve Tickets")).BodyTemplateId("days-to-resolve-tickets-line-template").ColSpan(2).RowSpan(3);
-            c.Add().Header(h => h.Text("Totals by Status")).BodyTemplateId("totals-by-status-pie-template").ColSpan(2).RowSpan(2);
-            c.Add().Header(h => h.Text("Totals by Status")).BodyTemplateId("totals-by-status-donut-template").ColSpan(2).RowSpan(2);
-            c.Add().Header(h => h.Text("Totals by Organization")).BodyTemplateId("totals-by-organization-pie-template").ColSpan(2).RowSpan(2);
-            c.Add().Header(h => h.Text("Totals by Organization")).BodyTemplateId("totals-by-organization-donut-template").ColSpan(2).RowSpan(2);
+            c.Add().Header(h => h.Text("Totals by Status")).BodyTemplateId("totals-by-status-pie-template").ColSpan(2).RowSpan(3);
+            c.Add().Header(h => h.Text("Totals by Status")).BodyTemplateId("totals-by-status-donut-template").ColSpan(2).RowSpan(3);
+            c.Add().Header(h => h.Text("Totals by Organization")).BodyTemplateId("totals-by-organization-pie-template").ColSpan(2).RowSpan(3);
+            c.Add().Header(h => h.Text("Totals by Organization")).BodyTemplateId("totals-by-organization-donut-template").ColSpan(2).RowSpan(3);
+            c.Add().Header(h => h.Text("Days to Resolve Tickets Once at PPRM")).BodyTemplateId("days-to-resolve-tickets-once-at-pprm-bar-template").ColSpan(2).RowSpan(3);
+            c.Add().Header(h => h.Text("Days to Resolve Tickets Once at PPRM")).BodyTemplateId("days-to-resolve-tickets-once-at-pprm-line-template").ColSpan(2).RowSpan(3);
         })
         .Reorderable(true)
         .Resizable(true)
