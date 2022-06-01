@@ -23,45 +23,6 @@ namespace QMSCharts.Controllers
             return View();
         }
 
-        public IActionResult TotalsByStatus()
-        {
-            return View();
-        }
-
-        public IActionResult DaysToResolveTickets()
-        {
-            return View();
-        }
-       public IActionResult DaysToResolveTicketsForMultipleOrgs()
-        {
-            return View();
-        }
-
-        public IActionResult DaysToResolveTicketsOnceAtPPRM()
-        {
-            return View();
-        }
-        
-        public IActionResult TicketsByOrganizationCreatedAt()
-        {
-            return View();
-        }
-
-        public IActionResult TotalsByOrganization()
-        {
-            return View();
-        }
-
-        public IActionResult TicketsByNOA()
-        {
-            return View();
-        }
-
-        public IActionResult ErrorTypeCounts()
-        {
-            return View();
-        }
-
         public IActionResult Privacy()
         {
             return View();
